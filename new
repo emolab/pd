@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <video id="SphereVideo" crossorigin="anonymous" autoplay loop="true" preload="auto" src="https://ucarecdn.com/a46cfc55-37ed-4eb0-a4e4-e034b2023631/" webkit-playsinline/>
+        <video id="SphereVideo2" crossorigin="anonymous" loop="true" preload="false" src=" https://cdn.glitch.com/a5282a19-e7fc-414b-9873-553013aaec09%2F738659262.mp4?1509923536760" webkit-playsinline/>
+        <a-mixin id="FeelingsIcon" geometry="primitive:plane;height:1" material="transparent:true;shader:flat" event-set__1="_event: mouseenter; geometry.radius: 0.6" event-set__2="_event: mouseleave; geometry.radius: 0.5"></a-mixin>
+        <img id="bar" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/95665f2a-7bd5-4e50-a26a-c5189c80926a/"/>
+        <img id="home" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/beaf0349-5433-4ed5-a30e-325914602076/"/>
+        <img id="CheatSheetMath" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/eb0b27e4-4aa6-4eb2-beb2-5cd62f260cf3/"/>
+        <img id="CheatSheet13s" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/f195fa2a-ca0d-49c6-939f-88186bc925f3/">
+        <img id="CheatSheet17s" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/ad8097a6-0a24-4018-af47-8976e2c85819/"/>
+        <img id="CheatSheetHome" crossorigin="anonymous" preload="auto" src="https://cdn.glitch.com/a62b3493-4f41-4a1f-acfb-4282140451af%2Fvideo-player.png?1516051885384"/>
+        <img id="1" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/78b3f95e-77c6-49e2-9a90-71241acb3643/"/>
+        <img id="2" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/bd93b8e2-2af8-4f9e-989a-26ef59f893e6/"/>
+        <img id="3" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/880bd8aa-d8d3-4f6e-90c7-9448ec5d2249/"/>
+        <img id="4" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/efec4cd1-f9fe-4d93-880d-8d44a84c58fe/"/>
+        <img id="5" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/d1c68e31-b84a-4093-8daf-b8f20696525b/"/>
+        <img id="6" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/bed20b1e-3a4b-425c-86dc-705f168e6fe0/"/>
+        <img id="7" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/25d11eac-9dd5-43a6-97b6-727482a10760/"/>
+        <img id="8" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/f15460ee-2f5b-4bb0-a830-46c619a6aaf9/"/>
+        <img id="9" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/17f55559-f9a1-4fa3-bd77-51cc95db5635/"/>
+        <img id="10" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/b361e8fc-4310-408b-8e4e-c80a8c00f539/"/>
+        <img id="fullbar" crossorigin="anonymous" preload="auto" src="https://ucarecdn.com/03f8b0cf-ccf1-4870-b3d3-cdd9ddc5756e/"/>
+        <a-entity oculus-touch-controls="hand: left"></a-entity>
+        <a-entity oculus-touch-controls="hand: right"></a-entity>
+        <a-entity laser-controls="hand: left"></a-entity>
+        <a-entity laser-controls="hand: right"></a-entity>
+
+        
+      </a-assets>
+      <a-entity camera="userHeight: 1.6" look-controls mouse-cursor>
+     
+        <a-entity oculus-touch-controls="hand: left"></a-entity>
+        <a-entity oculus-touch-controls="hand: right"></a-entity>
+        <a-entity laser-controls="hand: left"></a-entity>
+        <a-entity laser-controls="hand: right"></a-entity>
+
+      </a-entity>
+      <a-videosphere id="vidsphere" src="#SphereVideo" geometry="radius:500"></a-videosphere>
+      <a-entity id="AnswerSheet" onclick="CheatSheetToggle(this);" geometry="primitive:circle;radius:0.6" material="src:#CheatSheetMath" direction="reverse" position="0 0 -4" rotation="-30 0 0"></a-entity>
+      <a-sky id="WhiteSky" color="white" radius="50" visible="false">
+        <a-entity position="-0.449 3.336 -4.724" rotation="0 180 0" scale="10 10 10" geometry="primitive:plane" material="transparent:true;src:#CheatSheet17s;shader:flat"></a-entity>
+      </a-sky>
+      <a-entity id="FeelingsIndicator" position="0 -2.5 -4" scale="0 0 0" rotation="-35 0 0">
+        <a-entity id="HowYaFeelingText" material="color:white" position="0 1 0" scale="10 10 10" text__qtext="value:Please indicate how pleasant you feel:;side:double;align:center;color:white"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(1);" position="-4 0 0" material="src:#1; transparent:true;"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(2);" position="-3 0 0" material="src:#2; transparent:true;"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(3);" position="-2 0 0" material="src:#3"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(4);" position="-1 0 0" material="src:#4"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(5);" position="0 0 0"  material="src:#5"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(6);" position="1 0 0"  material="src:#6"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(7);" position="2 0 0"  material="src:#7"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(8);" position="3 0 0"  material="src:#8"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(9);" position="4 0 0"  material="src:#9"></a-entity>
+        <a-entity mixin="FeelingsIcon" onclick="FeelingsScore(10);" position="5 0 0"  material="src:#10"></a-entity>
+       </a-entity>
+      <!--<a-videosphere src="https://cdn.glitch.com/a5282a19-e7fc-414b-9873-553013aaec09%2F738659262.mp4?1509923536760"></a-videosphere>-->                                                                                                      
+    </a-scene>
+    <script> 
+      function CheatSheetToggle(el){
+        var CheatSheetAnimation = document.getElementById('AnswerSheet');
+        var WhiteSky = document.getElementById('WhiteSky');
+        var playercursor = document.getElementById('playercursor');
+        var HowYaFeeling = document.getElementById('HowYaFeelingText');
+        var ButtonDirection = CheatSheetAnimation.getAttribute('direction');      
+        //Uncaught TypeError: el.emit is not a function
+        if (ButtonDirection != 'normal'){
+          CheatSheetAnimation.setAttribute('direction','normal');
+          CheatSheetAnimation.setAttribute('material', 'src','#CheatSheetHome');
+          WhiteSky.setAttribute('visible','true');
+          HowYaFeeling.setAttribute('text__qtext','color','black');
+          playercursor.setAttribute('color','black');
+        }  else { CheatSheetAnimation.setAttribute('direction','reverse');
+                   CheatSheetAnimation.setAttribute('material', 'src','#CheatSheetMath');
+                   WhiteSky.setAttribute('visible','false');
+                   HowYaFeeling.setAttribute('text__qtext','color','white');
+                   playercursor.setAttribute('color','white');
+        }
+      };
+    </script>
+    <script>
+      function FeelingsPopUp(scale) {
+         var feelindicator = document.getElementById('FeelingsIndicator');
+        feelindicator.setAttribute('scale', '1 1 1')}
+        setInterval(FeelingsPopUp, 5 * 1000); 
+       function FeelingsDown(scale) {
+       var feelindicator = document.getElementById('FeelingsIndicator');
+        feelindicator.setAttribute('scale', '0 0 0');}
+    
+    </script>
+    <script>
+
+   
+   </script>
+  </body>
+</html>
+
+
